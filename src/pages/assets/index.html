@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Prism.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-core.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script>
+    Prism.plugins.autoloader.languages_path =
+      "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/";
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+
+</head>
+
+<body>
+
+  <section id="markdown">
+  </section>
+
+  <section id="toast-stack"></section>
+  <!-- Templates -->
+  <template id="toast-template">
+    <div class="toast-notification">
+      <span class="toast-title">Toast Notification Title</span>
+      <span class="toast-body">Toast Notification Body</span>
+    </div>
+  </template>
+  <template id="tables-copy-template">
+    <div class="md-table-navbar">
+      <button class="md-table-copy" data-as="html">Html</button>
+      <button class="md-table-copy" data-as="csv">Csv</button>
+      <button class="md-table-copy" data-as="json">Json</button>
+    </div>
+  </template>
+  <!-- Inline styles && script -->
+</body>
+<tr></tr>
+
+</html>
