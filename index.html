@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Prism.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-core.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script>
+    Prism.plugins.autoloader.languages_path =
+      "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/";
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+  <script src="/src/scripts/script.ts" type="module" defer></script>
+
+</head>
+
+<body>
+
+  <section id="markdown">
+    <h1 class="md-header md-header-1">Title</h1>
+    <div class="md-admonition md-admonition-note"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Admonition Title </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">This is a note admonition line 1.<br>This is a second line.<br>2This is a line starting
+          with a number.<br>23123This is a long numeric prefix test.<br>This is 1asdsa note admonition.<br><strong>BOLD
+            INSIDE ADMONITION</strong><br><em>italic inside admonition</em><br><code
+            class="md-codespan">inline code</code> inside admonition<br>normal line continues </p>
+      </blockquote>
+    </div>
+    <blockquote class="md-blockquote">
+      <ul class="md-list md-list-unordered">
+        <li class="md-list-item">list item inside admonition </li>
+        <li class="md-list-item">another list item</li>
+      </ul>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">nested blockquote inside admonition<br>still part of the admonition </p>
+      </blockquote>
+      <div class="md-code-container">
+        <pre class="md-pre language-"><code class="md-code language-">fenced code block in admonition
+second line</code></pre><span class="md-code-langdisplay"></span>
+      </div>
+      <p class="md-paragraph"><a class="md-anchor" href="https://example.com" title="null">link inside admonition</a>
+      </p>
+    </blockquote>
+    <p class="md-paragraph">paragraph after admonition</p>
+    <hr class="md-hr">
+    <h2 class="md-header md-header-2" id="additional-tests">Additional Tests</h2>
+    <h3 class="md-header md-header-3" id="warning-admonition">Warning Admonition</h3>
+    <div class="md-admonition md-admonition-warning"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>This is a Warning </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">The system is approaching limits.<br><strong>Act quickly.</strong><br>More description
+          here. </p>
+      </blockquote>
+    </div>
+    <p class="md-paragraph">Normal paragraph.</p>
+    <hr class="md-hr">
+    <h3 class="md-header md-header-3" id="tip-admonition">Tip Admonition</h3>
+    <div class="md-admonition md-admonition-tip"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Quick Tip </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">Remember to hydrate!<br>Use <em>italic</em>, <strong>bold</strong>, and <code
+            class="md-codespan">code</code>.</p>
+      </blockquote>
+    </div>
+    <hr class="md-hr">
+    <h3 class="md-header md-header-3" id="nested-admonition-test">Nested Admonition Test</h3>
+    <div class="md-admonition md-admonition-unknown"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Parent Admonition </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">Parent line 1<br>Parent line 2 </p>
+      </blockquote>
+    </div>
+    <blockquote class="md-blockquote">
+      <div class="md-admonition md-admonition-note"><span class="md-admonition-title"><span
+            class="md-admonition-icon"></span>Nested Child Admonition </span>
+        <blockquote class="md-blockquote">
+          <p class="md-paragraph">Child line A<br>Child line B </p>
+        </blockquote>
+      </div>
+      <p class="md-paragraph">Parent line 3</p>
+    </blockquote>
+    <p class="md-paragraph">After nested admonition.</p>
+    <hr class="md-hr">
+    <h3 class="md-header md-header-3" id="admonition-with-interrupted-block">Admonition with interrupted block</h3>
+    <div class="md-admonition md-admonition-caution"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Broken Block </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">Line 1 inside<br>Line 2 inside </p>
+      </blockquote>
+    </div>
+    <p class="md-paragraph">This line breaks the admonition.</p>
+    <blockquote class="md-blockquote">
+      <p class="md-paragraph">This MUST NOT be inside the admonition.</p>
+    </blockquote>
+    <hr class="md-hr">
+    <h3 class="md-header md-header-3" id="multiple-admonitions-back-to-back">Multiple Admonitions Back-to-Back</h3>
+    <div class="md-admonition md-admonition-unknown"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>First Box </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">content A</p>
+      </blockquote>
+    </div>
+    <div class="md-admonition md-admonition-warning"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Second Box </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">content B</p>
+      </blockquote>
+    </div>
+    <div class="md-admonition md-admonition-unknown"><span class="md-admonition-title"><span
+          class="md-admonition-icon"></span>Third Box </span>
+      <blockquote class="md-blockquote">
+        <p class="md-paragraph">content C</p>
+      </blockquote>
+    </div>
+    <hr class="md-hr">
+    <h3 class="md-header md-header-3" id="edge-case:-empty-admonition">Edge Case: Empty admonition</h3>
+    <blockquote class="md-blockquote">
+      <p class="md-paragraph">[!NOTE] Empty Box </p>
+    </blockquote>
+    <p class="md-paragraph">Paragraph after empty box.</p>
+    <hr class="md-hr">
+    <p class="md-paragraph">END OF TEST</p>
+  </section>
+
+  <section id="toast-stack"></section>
+  <!-- Templates -->
+  <template id="toast-template">
+    <div class="toast-notification">
+      <span class="toast-title">Toast Notification Title</span>
+      <span class="toast-body">Toast Notification Body</span>
+    </div>
+  </template>
+  <template id="tables-copy-template">
+    <div class="md-table-navbar">
+      <button class="md-table-copy" data-as="html">Html</button>
+      <button class="md-table-copy" data-as="csv">Csv</button>
+      <button class="md-table-copy" data-as="json">Json</button>
+    </div>
+  </template>
+  <!-- Inline styles && script -->
+</body>
+
+</html>

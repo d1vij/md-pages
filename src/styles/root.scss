@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+$font-name: "Fira Code";
+
+// Colors
+$background-base: #222426;
+$font-color: #f7f8f8;
+
+// Surfaces (layered backgrounds)
+$surface-1: #1A1B1C;
+$surface-2: #1F2021;
+$surface-3: #2A2B2D;
+$surface-4: #ece7e7;
+
+// Borders
+$border-soft: #2E2F31;
+$border-strong: #3A3B3D;
+$border-hover: #484A4C;
+
+// Text
+$text-primary: #ECECEC;
+$text-secondary: #B1B1B1;
+$text-muted: #8D8E8F;
+$text-disabled: #5A5B5C;
+
+$text-primary-dark: #1A1A1C; // deep charcoal (not pure black)
+$text-secondary-dark: #2E2F31; // softer graphite
+$text-muted-dark: #4A4B4D; // muted neutral grey
+$text-disabled-dark: #7A7B7D; // light grey for disabled text
+
+// Accents (pick one family)
+$accent-blue: #3C82F6;
+$accent-teal: #3AADA1;
+$accent-mint: #3FE0D0;
+$accent-purple: #A98CFF;
+$accent-gold: #C9A96A;
+
+// States
+$state-success: #3DAA63;
+$state-error: #D65F5F;
+$state-warning: #E0B05A;
+
+// Mixins
+@mixin border {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: $border-soft;
+    transition: border-color 50ms ease-in-out;
+
+    &:hover {
+        border-color: $border-hover;
+    }
+}
+
+
+// Styles
+* {
+    // border: 1px solid red;
+
+    color: $text-primary;
+    font-family: $font-name, monospace;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: $background-base;
+    font-size: 16px;
+}
+
+
+// MARKDOWN HIGHLIGHTING
+#markdown {
+    width: 80ch;
+    background-color: $background-base;
+    scroll-behavior: smooth;
+
+    &,
+    & * {
+
+        &::selection {
+            background: #FFEE8C;
+            color: $text-muted-dark;
+            text-decoration-color: $text-muted-dark;
+        }
+
+        &::-moz-selection {
+            background: #FFEE8C;
+            color: $text-muted-dark;
+            text-decoration-color: $text-muted-dark;
+        }
+    }
+
+}
+
+// HEADERS
+#markdown>.md-header-1:first-child {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 2px;
+
+}
+
+.md-header {
+    border-width: 10px;
+    font-weight: 700;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+
+    &.md-header-1 {
+        font-size: 2.5rem;
+    }
+
+    &.md-header-2 {
+        font-size: 2rem;
+    }
+
+    &.md-header-3 {
+        font-size: 1.6rem;
+    }
+
+    &.md-header-4 {
+        font-size: 1.38rem;
+    }
+
+    &.md-header-5 {
+        font-size: 1.24rem;
+    }
+
+    &.md-header-6 {
+        font-size: 1rem;
+    }
+}
+
+// CODE
+.md-pre {
+    background-color: $surface-3 !important;
+    @include border();
+}
+
+.md-code {
+    // Disable the text shadow
+    text-shadow: none !important;
+}
+
+.md-code-container {
+    position: relative;
+}
+
+.md-code-langdisplay {
+    position: absolute;
+    user-select: none;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8em;
+    padding: 2px;
+    border-radius: 2px;
+    color: $text-secondary ;
+    background-color: $surface-2;
+    background-color: inherit;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+// HR
+.md-hr {
+    margin-left: -20px;
+    margin-right: -20px;
+    border-width: 1px;
+
+    height: 1px;
+    background-color: $surface-3;
+
+    border-color: $surface-3;
+    border-radius: 2px;
+    border-style: solid;
+}
+
+
+// IMAGES
+.md-image {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 500px;
+}
+
+@mixin apply-blockquote-borders($color-normal, $color-hover) {
+    border-radius: 5px;
+    border-style: solid;
+
+    border-width: 1px;
+    border-left-width: 5px;
+
+    border-color: $color-normal;
+    transition: border-color 50ms ease-in-out;
+    margin-bottom: 1em;
+
+    &:hover {
+        border-color: $color-hover;
+    }
+
+    &:has(.md-blockquote:hover):hover {
+        border-color: $color-normal;
+    }
+
+    & .md-blockquote {
+        margin: 5px;
+    }
+
+}
+
+// BLOCKQUOTES
+.md-blockquote {
+    background-color: $surface-3;
+    margin: 0;
+    padding-left: 1ch;
+
+    @include apply-blockquote-borders($border-strong, $border-hover);
+}
+
+
+// TABLE
+.md-table {
+    background-color: $surface-2;
+    padding: 1em;
+    @include border();
+    width: 100%;
+    border-spacing: 0px;
+    position: relative;
+
+    .md-table-navbar {
+        padding: 0;
+        position: absolute;
+        right: 1em;
+        bottom: 0.5em;
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.25em;
+
+        .md-table-copy {
+            height: 2em;
+            font-size: 0.8em;
+            border-radius: 5px;
+            border-style: none;
+            color: $text-secondary ;
+            background-color: $surface-2;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $surface-3;
+            }
+        }
+    }
+}
+
+.md-table-header {
+    background-color: $surface-3;
+    padding: 1em;
+    @include border();
+    border-radius: 0px;
+    border-width: 1px;
+
+    &:first-child {
+        border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 5px;
+    }
+}
+
+.md-table-data {
+    border-style: solid;
+    border-color: $text-secondary-dark;
+    padding-inline: 10px;
+    margin-inline: 10px;
+    @include border();
+    border-width: 1px;
+    border-radius: 0px;
+}
+
+// First Row
+.md-table-row:first-child .md-table-data {
+    border-top: none;
+}
+
+// Last Row
+.md-table-row:last-child .md-table-data {
+    border-bottom: none;
+}
+
+// First column
+.md-table-row .md-table-data:first-child {
+    border-left: none;
+}
+
+// Last column
+.md-table-row .md-table-data:last-child {
+    border-right: none;
+}
+
+
+// ADMONITIONS
+
+@mixin admonition-title-styling($admonition_color, $admonition_icon) {
+    .md-admonition-title {
+        font-size: 1.75em;
+        background-color: $admonition_color;
+        width: 100%;
+        display: flex;
+        gap: 1ch;
+
+        .md-admonition-icon {
+            content: url($admonition_icon);
+        }
+    }
+
+}
+
+.md-admonition {
+    // Admonition colors
+
+    $note-background: #629af175;
+    $note-border: #0c2c5e80;
+
+
+    $tip-background: #65aa7275;
+    $tip-border: #0e361680;
+
+    $important-background: #ac89ed75;
+    $important-border: #37235c80;
+
+    $warning-background: #bb974f75;
+    $warning-border: #3f2a0180;
+
+    $caution-background: #da6f6f75;
+    $caution-border: #56262680;
+
+
+    position: relative;
+    overflow: hidden;
+    &.md-admonition-note {
+        background-color: $note-background;
+        @include apply-blockquote-borders($note-border, $note-border);
+        @include admonition-title-styling($note-border, "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z'/%3E%3C/svg%3E")
+    }
+
+    &.md-admonition-tip {
+        background-color: $tip-background;
+        @include apply-blockquote-borders($tip-border, $tip-border);
+        @include admonition-title-styling($tip-border, "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M400-240q-33 0-56.5-23.5T320-320v-50q-57-39-88.5-100T200-600q0-117 81.5-198.5T480-880q117 0 198.5 81.5T760-600q0 69-31.5 129.5T640-370v50q0 33-23.5 56.5T560-240H400Zm0-80h160v-92l34-24q41-28 63.5-71.5T680-600q0-83-58.5-141.5T480-800q-83 0-141.5 58.5T280-600q0 49 22.5 92.5T366-436l34 24v92Zm0 240q-17 0-28.5-11.5T360-120v-40h240v40q0 17-11.5 28.5T560-80H400Zm80-520Z'/%3E%3C/svg%3E")
+    }
+
+    &.md-admonition-important {
+        background-color: $important-background;
+        @include apply-blockquote-borders($important-border, $important-border);
+
+    }
+
+    &.md-admonition-warning {
+        background-color: $warning-background;
+        @include apply-blockquote-borders($warning-border, $warning-border);
+
+    }
+
+    &.md-admonition-caution {
+        background-color: $caution-background;
+        @include apply-blockquote-borders($caution-border, $caution-border);
+    }
+
+    &>.md-blockquote {
+        border: none;
+        background-color: transparent;
+        background-color: red;
+        height: 100%;
+        margin: 0;
+    }
+
+    .md-admonition-title {}
+}
