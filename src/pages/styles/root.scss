@@ -192,35 +192,39 @@ body {
     max-height: 500px;
 }
 
+@mixin apply-blockquote-borders($color-normal, $color-hover) {
+    border-radius: 5px;
+    border-style: solid;
+
+    border-width: 1px;
+    border-left-width: 5px;
+
+    border-color: $color-normal;
+    transition: border-color 50ms ease-in-out;
+    margin-bottom: 1em;
+
+    &:hover {
+        border-color: $color-hover;
+    }
+
+    &:has(.md-blockquote:hover):hover {
+        border-color: $color-normal;
+    }
+
+    & .md-blockquote {
+        margin: 5px;
+    }
+
+}
 
 // BLOCKQUOTES
 .md-blockquote {
     background-color: $surface-3;
     margin: 0;
     padding-left: 1ch;
-    
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: $border-strong;
-    transition: border-color 50ms ease-in-out;
-    margin-bottom: 1em;
 
-    &:hover {
-        border-color: $border-hover;
-    }
-
-    border-left-width: 5px;
-
-    // 
-    &:has(.md-blockquote:hover):hover {
-        border-color: $border-strong;
-    }
-    & .md-blockquote {
-        margin: 5px;
-    }
+    @include apply-blockquote-borders($border-strong, $border-hover);
 }
-
 
 
 // TABLE
@@ -303,4 +307,80 @@ body {
 // Last column
 .md-table-row .md-table-data:last-child {
     border-right: none;
+}
+
+
+// ADMONITIONS
+
+
+.md-admonition {
+    // Admonition colors
+
+    $note-background: #629af175;
+    $note-border: #0c2c5e80;
+
+
+    $tip-background: #65aa7275;
+    $tip-border: #0e361680;
+
+    $important-background: #ac89ed75;
+    $important-border: #37235c80;
+
+    $warning-background: #bb974f75;
+    $warning-border: #3f2a0180;
+
+    $caution-background: #da6f6f75;
+    $caution-border: #56262680;
+
+
+    position: relative;
+
+    padding-top: 2rem;
+
+    &.md-admonition-note {
+        background-color: $note-background;
+        @include apply-blockquote-borders($note-border, $note-border);
+
+        .md-admonition-title {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 1.5rem;
+
+            &::before {
+                content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23e3e3e3'%3E%3Cpath d='M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z'/%3E%3C/svg%3E");
+                margin-top: 5px; 
+                vertical-align: middle;
+            }
+        }
+    }
+
+    &.md-admonition-tip {
+        background-color: $tip-background;
+        @include apply-blockquote-borders($tip-border, $tip-border);
+    }
+
+    &.md-admonition-important {
+        background-color: $important-background;
+        @include apply-blockquote-borders($important-border, $important-border);
+
+    }
+
+    &.md-admonition-warning {
+        background-color: $warning-background;
+        @include apply-blockquote-borders($warning-border, $warning-border);
+
+    }
+
+    &.md-admonition-caution {
+        background-color: $caution-background;
+        @include apply-blockquote-borders($caution-border, $caution-border);
+    }
+
+    &>.md-blockquote {
+        border: none;
+        background-color: transparent;
+    }
+
+    .md-admonition-title {}
 }

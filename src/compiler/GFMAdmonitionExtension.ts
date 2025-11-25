@@ -3,7 +3,14 @@ import { addClasses } from "./CustomRenderer.js";
 
 // NOTE: Nested admonitions are broken
 
-const ValidAdmonitions = ["info", "warning", "note", "tip", "unknown"];
+const ValidAdmonitions = [
+    "note",
+    "tip",
+    "important",
+    "warning",
+    "caution",
+    "unknown"
+];
 type ValidAdmonitionType = (typeof ValidAdmonitions)[number];
 
 // 
@@ -108,10 +115,23 @@ export const GFMAdmonitionsExtension: TokenizerExtension | RendererExtension = {
         const admType = tokens.admonitionType.toLowerCase();
 
         return `<div ${addClasses("md-admonition", `md-admonition-${admType}`)}>`
-            + `<span ${addClasses("md-admonition-title")}>${title}</span>`
+            + `<span ${addClasses("md-admonition-title")}>`
+            + `<span ${addClasses("md-admonition-icon")}></span>`
+            + `${title}`
+            + `</span>`
             + `<blockquote ${addClasses("md-blockquote")}>`
             + body
             + `</blockquote>`
             + `</div>`
     }
+}
+
+
+type myArray<T> = T[]
+const myIntArray: myArray<number> = [1, 2, 3];
+const myStrArray: myArray<string> = ['a', 'b'];
+
+// Stuff like this can get complicated in normal code
+interface a<in out ain>{
+
 }

@@ -34,6 +34,7 @@ export enum MarkdownClasses {
     "md-admonition",
     "md-admonition-TYPE",
     "md-admonition-title",
+    "md-admonition-icon",
 
     "md-table", // <table>
     "md-table-head", // <thead>
@@ -190,6 +191,7 @@ export class CustomRenderer extends Renderer {
             + `${content}`
             + `</${type} >`
     }
+
     public override tablerow({ text }: Tokens.TableRow<string>): string {
         return `<tr ${addClasses("md-table-row")}> ${text} </tr>`
     }
